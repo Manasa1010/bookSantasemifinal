@@ -195,7 +195,7 @@ export default class WelcomeScreen extends  React.Component{
                     isModalVisible:true
                 })
             }}>
-                <Text>SignUp</Text>
+                <Text style={styles.buttonText}>SignUp</Text>
                 </TouchableOpacity>
 
             </View>
@@ -209,16 +209,21 @@ var styles=StyleSheet.create({
         justifyContent:"center"
     },
     inputBox:{
-        width:100,
-        height:30,
+        width:"80%",
+        height:100,
         borderWidth:2,
-        padding:5,
-        textAlign:"center"
+        padding:15,
+        textAlign:"center",
+        margin:15
     },button:{
-        width:100,
-        height:30,
+        width:"30%",
+        height:80,
         borderWidth:2,
-        padding:5,
-        backgroundColor:"pink"
+        padding:15,
+        backgroundColor:"pink",
+        margin:15
+    },
+    buttonText:{
+        fontSize:25
     }
 })

@@ -2,6 +2,8 @@
 import * as  React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WelcomeScreen from "./screens/WelcomScreen";
+import {createAppContainer,createSwitchNavigator } from "react-navigation";
+import {AppTabNavigator} from "./components/AppTabNavigator"
 
 export default class App extends React.Component{
 render() {
@@ -10,7 +12,10 @@ render() {
   );
 }
 }
-
+var SwitchNavigator=createSwitchNavigator({
+  WelcomeScreen:{screen:WelcomeScreen},
+  AppTabNavigator:{screen:AppTabNavigator}
+})
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -19,3 +24,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+var container=createAppContainer(SwitchNavigator);
