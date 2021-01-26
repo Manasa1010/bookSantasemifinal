@@ -12,11 +12,34 @@ export default class BookRequestScreen extends React.Component{
           userId:firebase.auth().currentUser.email
       }
     }
+    createUniqueId(){
+        return Math.random().toString(36).substring(7)
+    }
+
+    addRequest=(bookName,reasonToRequest)=>{
+       var requestId=this.createUniqueId()
+       db.collection("BookRequest").add({
+           userId:this.state.userId,
+           bookName:bookName,
+           reasonToRequest:reasonToRequest,
+           requestId:requestId
+       })
+       this.setState(
+           {
+               bookName:"",
+               reasonToRequest:""
+
+           }
+       )
+       return Alert.alert("RequestAddedSuccessfully")
+    }
     render(){
         return(
             <View>
                 <Text>Book Request Screen</Text>
+                <KeyboardAvoidingView>
                 <TextInput style={styles.inputBox}
+
                  value ={this.state.bookName}
                 placeholder="bookName"
                 onChangeText={
@@ -39,6 +62,12 @@ export default class BookRequestScreen extends React.Component{
                 }
             }
               />
+              <TouchableOpacity style={styles.button} onPres={
+                  ()=>{
+                      this.addRequest(this.state.bookName,this.state.reasonToRequest)
+                  }
+              }><Text style={styles.buttonText}>I want to request</Text></TouchableOpacity>
+              </KeyboardAvoidingView>
             </View>
 
         )

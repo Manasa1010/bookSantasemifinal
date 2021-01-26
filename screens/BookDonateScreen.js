@@ -2,10 +2,17 @@ import * as React from "react";
 import {View,TextInput,TouchableOpacity,Text,StyleSheet} from "react-native";
 
 export default class BookDonateScreen extends React.Component{
+   
+        
+    
     render(){
         return(
             <View>
                 <Text>Book donate Screen</Text>
+               
+               
+
+               
             </View>
 
         )
