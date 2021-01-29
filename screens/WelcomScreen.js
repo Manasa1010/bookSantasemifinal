@@ -20,7 +20,7 @@ export default class WelcomeScreen extends  React.Component{
   userSignIn=(email,password)=>{
        firebase.auth().signInWithEmailAndPassword(email,password).then(
            ()=>{
-               return Alert.alert("successfully logged in ")
+              this.props.navigation.navigate("BookDonatScreen")
            }
        )
        .catch(error=>{
@@ -136,14 +136,15 @@ export default class WelcomeScreen extends  React.Component{
                           <TouchableOpacity style={styles.button} onPress={()=>{
                               this.userSignUp(this.state.email,this.state.password,this.state.confirmPassword)
                           }}>
-                                <Text style={styles.text}>Register</Text>
+                                <Text style={styles.buttonText}>Register</Text>
                           </TouchableOpacity>
                           <TouchableOpacity style={styles.button} onPress={()=>{
                               this.setState({
                                   isModalVisible:false
                               })
                           }}>
-                                <Text style={styles.text}>Cancel</Text>
+                                <Text style={styles.buttonText}>Cancel</Text>
+
                                 
                           </TouchableOpacity>
 
@@ -160,7 +161,7 @@ export default class WelcomeScreen extends  React.Component{
                 <View>{this.showModal()}
                     
                 </View>
-                <Text>BOOK SANTA</Text>
+                <Text style={styles.heading}>BOOK SANTA</Text>
             <TextInput 
             placeholder="Email"
             keyboardType="email-address"
@@ -188,7 +189,7 @@ export default class WelcomeScreen extends  React.Component{
             <TouchableOpacity style={styles.button} onPress={()=>{
                 this.userSignIn(this.state.email,this.state.password)
             }}>
-                <Text>Login</Text>
+                <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={()=>{
                 this.setState({
@@ -210,20 +211,26 @@ var styles=StyleSheet.create({
     },
     inputBox:{
         width:"80%",
-        height:100,
+       fontSize:20,
         borderWidth:2,
         padding:15,
         textAlign:"center",
         margin:15
     },button:{
-        width:"30%",
-        height:80,
+        width:"50%",
+       borderRadius:5,
+       alignItems:"center",
+       justifyContent:"center",
         borderWidth:2,
         padding:15,
         backgroundColor:"pink",
         margin:15
     },
     buttonText:{
-        fontSize:25
+        fontSize:20
+    },
+    heading:{
+        fontSize:20,
+        fontWeight:"bold"
     }
 })

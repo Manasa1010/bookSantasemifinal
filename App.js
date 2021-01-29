@@ -8,7 +8,7 @@ import {AppDrawerNavigator} from "./components/AppDrawerNavigator"
 export default class App extends React.Component{
 render() {
   return (
-    <WelcomeScreen/>
+    <AppContainer/>
   );
 }
 }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-var container=createAppContainer(SwitchNavigator);
+var AppContainer=createAppContainer(SwitchNavigator);
 
 
 
