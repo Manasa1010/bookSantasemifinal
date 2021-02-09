@@ -1,5 +1,5 @@
 import * as React from "react";
-import {View,TextInput,TouchableOpacity,Text,StyleSheet,KeyboardAvoidingView} from "react-native";
+import {View,TextInput,TouchableOpacity,Text,StyleSheet,KeyboardAvoidingView,Alert} from "react-native";
 import firebase from "firebase";
 import db from "../config"
 
@@ -62,7 +62,7 @@ export default class BookRequestScreen extends React.Component{
                 }
             }
               />
-              <TouchableOpacity style={styles.button} onPres={
+              <TouchableOpacity style={styles.button} onPress={
                   ()=>{
                       this.addRequest(this.state.bookName,this.state.reasonToRequest)
                   }

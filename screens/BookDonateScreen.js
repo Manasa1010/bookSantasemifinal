@@ -22,7 +22,7 @@ export default class BookDonateScreen extends React.Component{
               requestedBookList:requestedBookList
           })
       })
-      
+      console.log(this.state.requestedBookList)
    }  
     componentDidMount(){
         this.getBookList();
@@ -30,9 +30,8 @@ export default class BookDonateScreen extends React.Component{
     componentWillUnmount(){
         this.requestRef();
     }
-    keyExtractor=(item,index)=>{
-        index.toString();
-    }
+    keyExtractor=(item,index)=> index.toString();
+
     renderItem=({item,i})=>{
        return(
            <ListItem 
@@ -41,8 +40,9 @@ export default class BookDonateScreen extends React.Component{
            subtitle={item.reasonToRequest}
            titleStyle={{color:"blue",fontWeight:"bold"}}
            rightElement={
-               <TouchableOpacity><Text>Donate</Text></TouchableOpacity>
+               <TouchableOpacity style={{backgroundColor:"blue",width:100,height:20}}><Text>Donate</Text></TouchableOpacity>
            }
+           bottomDivider
            />
        )
     }
