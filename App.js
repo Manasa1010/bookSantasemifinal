@@ -16,14 +16,7 @@ var SwitchNavigator=createSwitchNavigator({
   WelcomeScreen:{screen:WelcomeScreen},
   AppDrawerNavigator:{screen:AppDrawerNavigator}
 })
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
 var AppContainer=createAppContainer(SwitchNavigator);
 
 

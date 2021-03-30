@@ -5,7 +5,7 @@ import firebase from "firebase";
 import {ListItem} from "react-native-elements";
 import MyHeader from "../components/MyHeader";
 
-export default class BookDonateScreen extends React.Component{
+export default class NotificationScreen extends React.Component{
    constructor(){
        super();
        this.state={
