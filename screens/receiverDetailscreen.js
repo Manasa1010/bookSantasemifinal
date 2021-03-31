@@ -17,7 +17,7 @@ export default class ReceiverDetailScreen extends React.Component {
       ],
       receiverName: '',
       receiverContact: '',
-      reciverAddress: '',
+      receiverAddress: '',
       receiverRequestDocId: '',
     };
   }
@@ -42,18 +42,21 @@ export default class ReceiverDetailScreen extends React.Component {
           this.setState({
             receiverName: doc.data().firstName,
             receiverContact: doc.data().phoneNo,
-            reciverAddress: doc.data().address,
+            receiverAddress: doc.data().address,
           });
         });
       });
+  }
+  componentDidMount(){
+    this.getReceiverDetails();
   }
   updateBookStatus = () => {
     db.collection('allDonations').add({
       bookName: this.state.bookName,
       requestId: this.state.requestId,
       requestedBy: this.state.receiverName,
-      donerId: this.state.userId,
-      requestStatus: 'donerInterested',
+      donorId: this.state.userId,
+      requestStatus: 'donorInterested',
     });
   };
   render() {

@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
     "expo": "^40.0.1",
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.2.4",

@@ -24,9 +24,9 @@ export default class MyDonationScreen extends React.Component{
         snapshot.forEach((doc)=>{
             var message=""
             if(requestStatus==="bookSent"){
-                message=this.state.donorName+"sent the Book"
+                message=this.state.userId+"sent the Book"
             }else{
-                message=this.state.donorName+"has snown interest in sending the book"
+                message=this.state.userId+"has snown interest in sending the book"
             }
             db.collection("AllNotification").doc(doc.id).update({
                 message:message,
@@ -50,7 +50,7 @@ export default class MyDonationScreen extends React.Component{
    }
    }
    getAllDonations=()=>{
-      this.requestRef= db.collection("allDonations").where("donerId","==",this.state.userId).onSnapshot((snapShot)=>{
+      this.requestRef= db.collection("allDonations").where("donorId","==",this.state.userId).onSnapshot((snapShot)=>{
           var allDonations=snapShot.docs.map(doc=>doc.data())
           this.setState({
               allDonations:allDonations
@@ -59,7 +59,7 @@ export default class MyDonationScreen extends React.Component{
       
    }  
   componentDidMount(){
-        this.getBookList();
+        this.getAllDonations();
     }
     componentWillUnmount(){
         this.requestRef();

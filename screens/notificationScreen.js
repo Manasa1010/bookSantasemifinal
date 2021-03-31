@@ -10,22 +10,22 @@ export default class NotificationScreen extends React.Component{
        super();
        this.state={
            userId:firebase.auth().currentUser.email,
-           requestedBookList:[]
+          notificationList:[]
        }
        this.requestRef=null;
 
    } 
-   getBookList=()=>{
-      this.requestRef= db.collection("BookRequest").onSnapshot((snapShot)=>{
-          var requestedBookList=snapShot.docs.map(doc=>doc.data())
+   getNotificationList=()=>{
+      this.requestRef= db.collection("AllNotification").onSnapshot((snapShot)=>{
+          varnotificationList=snapShot.docs.map(doc=>doc.data())
           this.setState({
-              requestedBookList:requestedBookList
+             notificationList:notificationListt
           })
       })
       
    }  
     componentDidMount(){
-        this.getBookList();
+        this.getNotificationList();
     }
     componentWillUnmount(){
         this.requestRef();
@@ -38,11 +38,11 @@ export default class NotificationScreen extends React.Component{
            <ListItem 
            key={i}
            title={item.bookName}
-           subtitle={item.reasonToRequest}
+           subtitle={item.message}
            titleStyle={{color:"blue",fontWeight:"bold"}}
            rightElement={
                <TouchableOpacity onPress={()=>{
-                 this.props.navigation.navigate("ReceiverDetailScreen",{"details":item})
+                
                }}><Text>Donate</Text></TouchableOpacity>
            }
            />
@@ -53,14 +53,14 @@ export default class NotificationScreen extends React.Component{
             <View>
                 <MyHeader/>
                <View>{
-                this.state.requestedBookList.length===0?(
+                this.state.notificationList.length===0?(
                     <View>
                         <Text>Loading.......</Text>
                     </View>
                 ):(
                     <FlatList 
                     keyExtractor={this.keyExtractor}
-                    data={this.state.requestedBookList}
+                    data={this.state.notificationList}
                     renderItem={this.renderItem}
                     />
                 )
