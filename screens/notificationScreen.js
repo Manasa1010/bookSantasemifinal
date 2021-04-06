@@ -19,7 +19,7 @@ export default class NotificationScreen extends React.Component{
       this.requestRef= db.collection("AllNotification").onSnapshot((snapShot)=>{
           varnotificationList=snapShot.docs.map(doc=>doc.data())
           this.setState({
-             notificationList:notificationListt
+             notificationList:notificationList
           })
       })
       
