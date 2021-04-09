@@ -51,7 +51,7 @@ export default class BookDonateScreen extends React.Component{
     render(){
         return(
             <View>
-                <MyHeader/>
+                <MyHeader title="donate screen" navigation={this.props.navigation}/>
                <View>{
                 this.state.requestedBookList.length===0?(
                     <View>

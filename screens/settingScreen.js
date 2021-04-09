@@ -48,8 +48,8 @@ export default class SettingScreen extends  React.Component{
 render(){
     return(
         <View>
-            <MyHeader/>
-            <Text>UpdateProfile</Text>
+            <MyHeader  title="Update Profile" navigation={this.props.navigation}/>
+            
             <TextInput placeholder="firstName"
                                 style={styles.inputBox}
                                 onChangeText={

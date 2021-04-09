@@ -17,7 +17,7 @@ export default class NotificationScreen extends React.Component{
    } 
    getNotificationList=()=>{
       this.requestRef= db.collection("AllNotification").onSnapshot((snapShot)=>{
-          varnotificationList=snapShot.docs.map(doc=>doc.data())
+          var notificationList=snapShot.docs.map(doc=>doc.data())
           this.setState({
              notificationList:notificationList
           })
@@ -51,7 +51,7 @@ export default class NotificationScreen extends React.Component{
     render(){
         return(
             <View>
-                <MyHeader/>
+                <MyHeader title="Notification List" navigation={this.props.navigation}/>
                <View>{
                 this.state.notificationList.length===0?(
                     <View>
