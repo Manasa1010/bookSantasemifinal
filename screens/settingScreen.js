@@ -22,13 +22,13 @@ export default class SettingScreen extends  React.Component{
             (snapShot)=>{
                 snapShot.forEach((doc)=>{
                     var data=doc.data()
-                    this.setState={
+                    this.setState({
                         firstName:data.firstName,
                         lastName:data.lastName,
                         address:data.address,
                         phoneNo:data.phoneNo,
                         docId:doc.id
-                    }
+                    })
                 })
             }
         )

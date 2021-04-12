@@ -87,7 +87,7 @@ export default class MyDonationScreen extends React.Component{
     render(){
         return(
             <View>
-                <MyHeader/>
+               <MyHeader title="My Donation screen" navigation={this.props.navigation}/>
                <View>{
                 this.state.allDonations.length===0?(
                     <View>
