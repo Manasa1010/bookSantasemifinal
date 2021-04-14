@@ -36,11 +36,10 @@ export default class BookRequestScreen extends React.Component {
       bookName: bookName,
       reasonToRequest: reasonToRequest,
       requestId: requestId,
+      bookStatus:"requested",
+      date:firebase.firestore.FieldValue.serverTimestamp()
     });
-    this.setState({
-      bookName: '',
-      reasonToRequest: '',
-    });
+   
     await this.getBookRequest()
     db.collection("User").where("email","==",this.state.userId).get().then(snapShot=>{
         snapShot.forEach((doc)=>{
@@ -49,9 +48,23 @@ export default class BookRequestScreen extends React.Component {
             })
         })
     })
+    this.setState({
+      bookName: '',
+      reasonToRequest: '',
+      requestId:requestId
+    });
     return Alert.alert('RequestAddedSuccessfully');
     
   };
+  updateBookRequestStatus=()=>{
+    db.collection("BookRequest").doc(this.state.docId).update({
+      bookStatus:"received"
+
+    })
+    db.collection("User").doc(this.state.userId).update({
+      isBookRequestActive:false
+    })
+  }
 
   getBookRequestIsActive=()=>{
       db.collection("User").where("email","==",this.state.userId).onSnapshot(snapShot=>{
@@ -68,7 +81,7 @@ receivedBooks=(bookName)=>{
       userId:this.state.userId,
       bookName:bookName,
       requestId:this.state.requestId,
-      bookStatus:received
+      bookStatus:"received"
   })
 }
   getBookRequest=()=>{

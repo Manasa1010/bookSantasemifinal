@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import db from '../config';
 import { Card } from 'react-native-elements';
 export default class ReceiverDetailScreen extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -21,21 +20,20 @@ export default class ReceiverDetailScreen extends React.Component {
       receiverRequestDocId: '',
     };
   }
-  addNotification=()=>{
-      var message=this.state.userId+" is interested to donate the book";
-      db.collection("AllNotification").add({
-          targetedUserId:this.state.receiverId,
-          donorId:this.state.userId,
-          requestId:this.state.requestId,
-          bookName:this.state.bookName,
-          notificationStatus:"unread",
-          message:message
-
-      })
-  }
+  addNotification = () => {
+    var message = this.state.userId + ' is interested to donate the book';
+    db.collection('AllNotification').add({
+      targetedUserId: this.state.receiverId,
+      donorId: this.state.userId,
+      requestId: this.state.requestId,
+      bookName: this.state.bookName,
+      notificationStatus: 'unread',
+      message: message,
+    });
+  };
   getReceiverDetails() {
     db.collection('User')
-      .where('emailId', '==', this.state.receiverId)
+      .where('email', '==', this.state.receiverId)
       .get()
       .then((snapShot) => {
         snapShot.forEach((doc) => {
@@ -47,7 +45,7 @@ export default class ReceiverDetailScreen extends React.Component {
         });
       });
   }
-  componentDidMount(){
+  componentDidMount() {
     this.getReceiverDetails();
   }
   updateBookStatus = () => {

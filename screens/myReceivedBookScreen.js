@@ -12,23 +12,26 @@ import firebase from 'firebase';
 import { ListItem } from 'react-native-elements';
 import MyHeader from '../components/MyHeader';
 
-export default class BookDonateScreen extends React.Component {
+export default class MyReceivedBookScreen extends React.Component {
   constructor() {
     super();
     this.state = {
       userId: firebase.auth().currentUser.email,
-      requestedBookList: [],
+      receivedBookList: [],
     };
     this.requestRef = null;
   }
   getBookList = () => {
-    this.requestRef = db.collection('BookRequest').onSnapshot((snapShot) => {
-      var requestedBookList = snapShot.docs.map((doc) => doc.data());
+    this.requestRef = db.collection('BookRequest').where("userId","==",this.state.userId)
+    .where("bookStatus","==","received")
+    .onSnapshot((snapShot) => {
+      var receivedBookList = snapShot.docs.map((doc) => doc.data());
       this.setState({
-        requestedBookList: requestedBookList,
+        receivedBookList: receivedBookList,
       });
     });
   };
+  
   componentDidMount() {
     this.getBookList();
   }
@@ -63,14 +66,14 @@ export default class BookDonateScreen extends React.Component {
       <View>
         <MyHeader title="donate screen" navigation={this.props.navigation} />
         <View>
-          {this.state.requestedBookList.length === 0 ? (
+          {this.state.receivedBookList.length === 0 ? (
             <View>
               <Text>Loading.......</Text>
             </View>
           ) : (
             <FlatList
               keyExtractor={this.keyExtractor}
-              data={this.state.requestedBookList}
+              data={this.state.receivedBookList}
               renderItem={this.renderItem}
             />
           )}
