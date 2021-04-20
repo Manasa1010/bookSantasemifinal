@@ -231,6 +231,7 @@ var styles = StyleSheet.create({
     padding: 15,
     textAlign: 'center',
     margin: 15,
+    backgroundColor:"#FBACCC"
   },
   button: {
     width: '50%',
@@ -239,14 +240,17 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     padding: 15,
-    backgroundColor: 'pink',
+    backgroundColor: '#F1D1D0',
     margin: 15,
   },
   buttonText: {
     fontSize: 20,
+    
   },
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontStyle:"italic",
+    shadowColor:"#F875AA"
   },
 });

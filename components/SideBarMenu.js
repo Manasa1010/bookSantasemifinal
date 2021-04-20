@@ -4,6 +4,7 @@ import { DrawerItems } from 'react-navigation-drawer';
 import firebase from 'firebase';
 import {Avatar} from "react-native-elements";
 import * as ImagePicker from "expo-image-picker"
+import db from "../config"
 
 export default class SideBarMenu extends React.Component {
     constructor(){

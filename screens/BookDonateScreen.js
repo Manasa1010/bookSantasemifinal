@@ -6,6 +6,7 @@ import {
   Text,
   StyleSheet,
   FlatList,
+  Image
 } from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
@@ -54,6 +55,9 @@ export default class BookDonateScreen extends React.Component {
             }}>
             <Text>Donate</Text>
           </TouchableOpacity>
+        }
+        leftElement={
+          <Image style={{height:50,width:50}} source={{uri:item.imageLink}}/>
         }
       />
     );
