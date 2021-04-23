@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
+import {RFValue} from "react-native-responsive-fontsize"
 
 export default class WelcomeScreen extends React.Component {
   constructor() {
@@ -218,39 +219,42 @@ export default class WelcomeScreen extends React.Component {
     );
   }
 }
+
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputBox: {
-    width: '80%',
-    fontSize: 20,
-    borderWidth: 2,
-    padding: 15,
-    textAlign: 'center',
-    margin: 15,
-    backgroundColor:"#FBACCC"
-  },
-  button: {
-    width: '50%',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    padding: 15,
-    backgroundColor: '#F1D1D0',
-    margin: 15,
-  },
-  buttonText: {
-    fontSize: 20,
-    
-  },
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
     fontStyle:"italic",
     shadowColor:"#F875AA"
+  },
+  container: {
+    
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputBox: {
+    width: '80%',
+    
+    borderWidth: 2,
+    padding: RFValue(5),
+    textAlign: 'center',
+    margin: 15,
+    
+    alignSelf:"center",
+    
+  },
+  button: {
+    width: '50%',
+    alignItems:"center",
+    borderWidth: 0.2,
+    padding: 15,
+    backgroundColor: 'pink',
+    margin: 15,
+    alignSelf:"center",
+    marginTop:20
+  },
+  buttonText: {
+    fontSize: 15,
+    textAlign:"center"
   },
 });

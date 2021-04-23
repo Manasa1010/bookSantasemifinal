@@ -46,8 +46,9 @@ export default class BookDonateScreen extends React.Component {
         title={item.bookName}
         subtitle={item.reasonToRequest}
         titleStyle={{ color: 'blue', fontWeight: 'bold' }}
+        bottomDivider
         rightElement={
-          <TouchableOpacity
+          <TouchableOpacity style={{borderWidth:0.5,padding:10,backgroundColor:"gold"}}
             onPress={() => {
               this.props.navigation.navigate('ReceiverDetailScreen', {
                 details: item,

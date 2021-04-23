@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { DrawerItems } from 'react-navigation-drawer';
 import firebase from 'firebase';
-import {Avatar} from "react-native-elements";
+import {Avatar,Icon} from "react-native-elements";
 import * as ImagePicker from "expo-image-picker"
 import db from "../config"
 
@@ -70,14 +70,14 @@ export default class SideBarMenu extends React.Component {
   render() {
     return ( 
       <View style={styles.container}>
-          <View>
+          <View style={{alignItems:"center", justifyContent:"center",marginTop:30}}>
               <Avatar
               
               rounded
               source={{
                   uri:this.state.image
               }}
-              size="medium"
+              size="xlarge"
               onPress={()=>{
                   this.selectPicture();
 
@@ -86,7 +86,7 @@ export default class SideBarMenu extends React.Component {
               containerStyle={styles.imageContainer}
 
               />
-              <Text>{this.state.name}</Text>
+              <Text style={{fontSize:20,fontWeight:"bold"}}>{this.state.name}</Text>
           </View>
         <View style={{ flex: 0.6 }}>
           <DrawerItems {...this.props} />
@@ -98,7 +98,12 @@ export default class SideBarMenu extends React.Component {
               this.props.navigation.navigate('WelcomeScreen');
               firebase.auth().signOut();
             }}>
-            <Text style={styles.buttonText}>Log Out</Text>
+              <Icon 
+              name="logout"
+              type="antdesign"
+              size={25}
+              />
+            <Text style={styles.buttonText}> Log Out</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -111,14 +116,16 @@ var styles = StyleSheet.create({
   },
 
   button: {
-    width: '30%',
-    height: 80,
-    borderWidth: 2,
+    width: '50%',
+    borderWidth: 0.5,
     padding: 15,
     backgroundColor: 'pink',
     margin: 15,
+    flexDirection:"row",
+    borderRadius:3,
+
   },
   buttonText: {
-    fontSize: 25,
+    fontSize:15,
   },
 });

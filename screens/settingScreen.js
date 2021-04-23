@@ -10,6 +10,7 @@ import {
 import db from '../config';
 import firebase from 'firebase';
 import MyHeader from '../components/MyHeader';
+import {RFValue} from "react-native-responsive-fontsize"
 
 export default class SettingScreen extends React.Component {
   constructor() {
@@ -109,36 +110,42 @@ export default class SettingScreen extends React.Component {
     );
   }
 }
+
+
 var styles = StyleSheet.create({
+  heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   container: {
-    flex: 1,
+    
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputBox: {
     width: '80%',
-    fontSize: 20,
+    
     borderWidth: 2,
-    padding: 15,
+    padding: RFValue(5),
     textAlign: 'center',
     margin: 15,
-    backgroundColor:"#FBACCC"
+    
+    alignSelf:"center",
+    
   },
   button: {
     width: '50%',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
+    alignItems:"center",
+    borderWidth: 0.2,
     padding: 15,
-    backgroundColor: '#F1D1D0',
+    backgroundColor: 'pink',
     margin: 15,
+    alignSelf:"center",
+    marginTop:20
   },
   buttonText: {
-    fontSize: 20,
-  },
-  heading: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 15,
+    textAlign:"center"
   },
 });
+

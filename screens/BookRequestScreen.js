@@ -12,8 +12,10 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 import db from '../config';
-import Myheader from "../components/MyHeader"
+import MyHeader from "../components/MyHeader"
 import {BookSearch} from "react-native-google-books"
+import {RFValue} from "react-native-responsive-fontsize"
+import {Card} from "react-native-elements"
 
 export default class BookRequestScreen extends React.Component {
   constructor() {
@@ -141,7 +143,7 @@ receivedBooks=(bookName)=>{
   }
   sendNotification=()=>{
    
-    db.collection("User").where("email","==",this.state.userId).get(),then((snapshot)=>{
+    db.collection("User").where("email","==",this.state.userId).get().then((snapshot)=>{
         snapshot.forEach((doc)=>{
             var firstName=doc.data().firstName
             var lastName=doc.data().lastName
@@ -165,8 +167,16 @@ receivedBooks=(bookName)=>{
       if(this.state.isBookRequestActive==true){
         return(
             <View>
-                <Text>book name:{this.state.bookName}</Text>
-                <Text>book status:{this.state.bookStatus}</Text>
+              <MyHeader
+          title="Book Request Screen"
+          navigation={this.props.navigation}
+        />
+        <Card>
+                <Text>Book name : {this.state.bookName}</Text>
+                </Card>
+                <Card>
+                <Text>Book status : {this.state.bookStatus}</Text>
+                </Card>
                 <TouchableOpacity
             style={styles.button}
             onPress={() => {
@@ -185,6 +195,14 @@ receivedBooks=(bookName)=>{
           title="Book Request Screen"
           navigation={this.props.navigation}
         />
+         <TextInput
+              style={styles.inputBox}
+              value={this.state.bookName}
+              placeholder="bookName"
+              onChangeText={(text) => {
+               this.getBooksFromApi(text);
+              }}
+            />
         {
           this.state.showFlatList?(
             <FlatList 
@@ -194,17 +212,9 @@ receivedBooks=(bookName)=>{
             style={{marginTop:10}}
             enableEmptySections={true}
             />
+
           ):( <KeyboardAvoidingView>
-            <TextInput
-              style={styles.inputBox}
-              value={this.state.bookName}
-              placeholder="bookName"
-              onChangeText={(text) => {
-                this.setState({
-                  bookName: text,
-                });
-              }}
-            />
+           
             <TextInput
               style={styles.inputBox}
               value={this.state.reasonToRequest}
@@ -232,27 +242,33 @@ receivedBooks=(bookName)=>{
 }
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputBox: {
     width: '80%',
-    height: 100,
+    
     borderWidth: 2,
-    padding: 15,
+    padding: RFValue(5),
     textAlign: 'center',
     margin: 15,
+    
+    alignSelf:"center",
+    
   },
   button: {
-    width: '30%',
-    height: 80,
-    borderWidth: 2,
+    width: '50%',
+    alignItems:"center",
+    borderWidth: 0.2,
     padding: 15,
     backgroundColor: 'pink',
     margin: 15,
+    alignSelf:"center",
+    marginTop:20
   },
   buttonText: {
-    fontSize: 25,
+    fontSize: 15,
+    textAlign:"center"
   },
 });
